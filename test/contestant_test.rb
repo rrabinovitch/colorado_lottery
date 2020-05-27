@@ -14,4 +14,8 @@ class ContestantTest < Minitest::Test
   def test_it_exists
     assert_instance_of Contestant, @alexander
   end
+
+  def test_it_has_attributes
+    assert_equal "Alexander Aigiades", @alexander.full_name
+  end
 end
