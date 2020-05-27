@@ -12,4 +12,8 @@ class GameTest < Minitest::Test
     assert_instance_of Game, @pick_4
     assert_instance_of Game, @mega_millions
   end
+
+  def test_it_has_attributes
+    assert_equal "Mega Millions", @mega_millions.name
+  end
 end
