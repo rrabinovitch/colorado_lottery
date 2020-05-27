@@ -25,4 +25,11 @@ class ContestantTest < Minitest::Test
   def test_it_knows_if_its_out_of_state
     assert_equal false, @alexander.out_of_state?
   end
+
+  def test_it_can_add_game_interest
+    @alexander.add_game_interest('Mega Millions')
+    @alexander.add_game_interest('Pick 4')
+
+    assert_equal ["Mega Millions", "Pick 4"], @alexander.game_interests
+  end
 end
