@@ -72,7 +72,27 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal true, @lottery.can_register?(@frederick, @mega_millions)
     assert_equal false, @lottery.can_register?(@benjamin, @mega_millions)
     assert_equal false, @lottery.can_register?(@frederick, @cash_5)
+  end
 
-    # interested_and_18? && (Colorado resident || national game?)
+  def test_it_can_register_a_contestant
+    @lottery.register_contestant(@alexander, @pick_4)
+    registered_contestants_1 = {"Pick 4"=> [@alexander]}
+
+    assert_equal registered_contestants_1, @lottery.registered_contestants
+
+    @lottery.register_contestant(@alexander, @mega_millions)
+    registered_contestants_2 = {"Pick 4"=> [@alexander],
+                                "Mega Millions"=> [@alexander]}
+
+    assert_equal registered_contestants_2, @lottery.registered_contestants
+
+    @lottery.register_contestant(@frederick, @mega_millions)
+    @lottery.register_contestant(@winston, @cash_5)
+    @lottery.register_contestant(@winston, @mega_millions)
+    registered_contestants_3 = {"Pick 4"=> [@alexander],
+                                "Mega Millions"=> [@alexander, @frederick, @winston],
+                                "Cash 5" => [@winston]}
+
+    assert_equal registered_contestants_3, @lottery.registered_contestants
   end
 end
