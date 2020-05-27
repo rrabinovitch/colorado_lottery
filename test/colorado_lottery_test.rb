@@ -70,9 +70,9 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal true, @lottery.can_register?(@alexander, @pick_4)
     assert_equal false, @lottery.can_register?(@alexander, @cash_5)
     assert_equal true, @lottery.can_register?(@frederick, @mega_millions)
-    assert_euqal false, @lottery.can_register?(@benjamin, @mega_millions)
+    assert_equal false, @lottery.can_register?(@benjamin, @mega_millions)
     assert_equal false, @lottery.can_register?(@frederick, @cash_5)
 
-    # interested in the game && 18 years of age or older && (Colorado resident || national game?)
+    # interested_and_18? && (Colorado resident || national game?)
   end
 end
