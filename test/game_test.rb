@@ -15,5 +15,6 @@ class GameTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal "Mega Millions", @mega_millions.name
+    assert_equal 5, @mega_millions.cost
   end
 end
