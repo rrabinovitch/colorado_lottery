@@ -74,7 +74,7 @@ class ColoradoLotteryTest < Minitest::Test
     assert_equal false, @lottery.can_register?(@frederick, @cash_5)
   end
 
-  def test_it_can_register_a_contestant
+  def test_it_can_register_contestants
     @lottery.register_contestant(@alexander, @pick_4)
     registered_contestants_1 = {"Pick 4"=> [@alexander]}
 
