@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require './lib/contestant'
 require './lib/game'
 require './lib/colorado_lottery'
 
@@ -45,5 +46,17 @@ class ColoradoLotteryTest < Minitest::Test
     assert_empty @lottery.registered_contestants
     assert_empty @lottery.winners
     assert_empty @lottery.current_contestants
+  end
+
+  def test_it_can_identify_whether_contestant_is_interested_and_18
+    @alexander.add_game_interest('Pick 4')
+    @alexander.add_game_interest('Mega Millions')
+    @frederick.add_game_interest('Mega Millions')
+    @winston.add_game_interest('Cash 5')
+    @winston.add_game_interest('Mega Millions')
+    @benjamin.add_game_interest('Mega Millions')
+    assert_equal true, @lottery.interested_and_18?(@alexander, @pick_4)
+    assert_equal false, @lottery.interested_and_18?(@benjamin, @mega_millions)
+    assert_euqal false, @lottery.interested_and_18?(@alexander, @cash_5)
   end
 end
