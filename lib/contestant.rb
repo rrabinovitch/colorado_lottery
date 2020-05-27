@@ -6,4 +6,8 @@ class Contestant
     @state_of_residence = contestant_params[:state_of_residence]
     @spending_money = contestant_params[:spending_money]
   end
+
+  def out_of_state?
+    @state_of_residence != "CO"
+  end
 end
